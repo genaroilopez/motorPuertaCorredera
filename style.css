@@ -5,7 +5,6 @@
     scroll-behavior: smooth;
 }
 :root{
-    --fuente-logo: 'Montserrat Alternates';
     --fuente: 'Inter';
     --fuenteText: 'Roboto';
     --celesteTransparente: #4cbcec2f;
@@ -26,14 +25,9 @@
 }
 @media (max-width: 700px) {
     body header .logo{
-        width: 60px;
-        height: 60px;
-        box-shadow: inset 0px 1px 7px #0000002a;
         display: flex;
+        justify-content: center;
         align-items: center;
-        border-radius: 20px;
-        justify-content: start;
-        margin-left: -220px;
     }
     body section .circle{
         display: none;
@@ -55,6 +49,105 @@
         justify-content: center;
         align-items: center;
     }
+    body .content .hamburguesa{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 10;
+        bottom: 3rem;
+        width: 64px;
+        height: 64px;
+        right: 1.5rem;
+        padding: 1rem;
+        background-color: var(--blancoTotal);
+        border-radius: 50%;
+        box-shadow: 0px 0px 10px rgb(126, 126, 126);
+    }
+    /* Menu */
+    body .fondo{
+        display: none;
+        position: fixed;
+        width: 100vh;
+        height: 100%;
+        z-index: 5;
+        background-color: #44444485;
+    }
+    body .fondo.active{
+        display: block;
+    }
+    body .content .hamburguesa a{
+        font-size: 1.7rem;
+        color: var(--negro);
+    }
+    body .content #menuMovil{
+        width: 50%;
+        position: fixed;
+        bottom: 20%;
+        right: -182px;
+        min-height: 30vh;
+        max-height: 40vh;
+        overflow-y: scroll;
+        border: 1px solid var(--gris);
+        border-radius: 10px;
+        background-color: var(--blancoTotal);
+        z-index: 100;
+        transition: .2s;
+        display: block;
+    }
+    body .content .menuMovil .categoriaPesos{
+        display: none;
+    }
+    body .content .menuMovil .categoriaPesos.active{
+        display: block;
+        background-color: var(--blanco);
+    }
+    body .content .menuMovil .categoriaMarcas{
+        display: none;
+    }
+    body .content .menuMovil .categoriaMarcas.active{
+        display: block;
+        background-color: var(--blanco);
+    }
+    body .content .menuMovil .categoriaKits{
+        display: none;
+    }
+    body .content .menuMovil .categoriaKits.active{
+        display: block;
+        background-color: var(--blanco);
+    }
+    body .content .menuMovil.active{
+        transform: translateX(-205px);
+    }
+    body .content .menuMovil li{
+        display: flex;
+        text-decoration: none;
+        height: 10vh;
+        padding-left: 20px;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--grisClaro);
+        border-bottom: 1px solid var(--grisClaro);
+        font-family: var(--fuente);
+        font-weight: 900;
+        color: var(--negro);
+    }
+    body .content .menuMovil span{
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        margin: auto;
+        padding: 5px 2px;
+        border-top: 1px solid var(--grisClaro);
+        font-family: var(--fuente);
+    }
+    body .content .menuMovil .flecha{
+        display: block;
+        margin-right: 20px;
+        color: var(--gris);
+        border: none;
+        width: auto;
+    }
     body section .content{
         position: relative;
         margin-top: 120px;
@@ -72,9 +165,6 @@
     body section .content .textBox h1{
         font-size: 36px;
         line-height: 40px;
-    }
-    body section .content .textBox .leerMas{
-        display: none;
     }
     body section .content .textBox .cluster{
         display: block;
@@ -192,16 +282,18 @@
   }
 a{
     text-decoration: none;
-    color: var(--celeste);
+    color: var(--celesteHover);
 }
 h3 a:hover{
     text-decoration: underline;
 }
 .rebaja{
     color: var(--rojoOscuro);
-    opacity: 50%;
     text-decoration: line-through;
     margin-left: 5px;
+}
+.subrrayado{
+    font-weight: 900;
 }
 ol{
     list-style: none;
@@ -210,7 +302,9 @@ ol{
 .logo{
     width: 90px;
     height: 90px;
-    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 section{
     position: relative;
@@ -234,27 +328,15 @@ header{
 }
 /* logo */
 header .logo{
-    align-items: center;
+    width: 100px;
+    height: 80px;
+    display: flex;
     justify-content: center;
-    display: flex;
-    user-select: none;
-}
-header .boxLogo{
-    width: 60px;
-    height: 60px;
-    box-shadow: inset 0px 1px 7px #0000002a;
-    display: flex;
     align-items: center;
-    border-radius: 20px;
-    justify-content: start;
 }
-header .boxLogo p{
-    color: var(--grisOscuro);
-    font-family: var(--fuente);
-    font-weight: 600;
-    border: 1px solid var(--grisClaro);
-    padding: 20px 20px 20px 70px;
-    border-radius: 20px;
+header .logo img{
+    margin: auto;
+    width: 100px;
 }
 header ul{
     position: relative;
@@ -263,18 +345,21 @@ header ul{
 }
 header ul li{
     list-style: none;
+    background-color: #ffffff8c;
+    border-radius: 10px;
+    margin: 4px;
 }
 header ul li span{
     transition: .2s;
-    color: var(--blanco);
+    color: var(--grisOscuro);
     font-size: 12px;
     margin-left: 8px;
 }
 header ul li a{
     display: inline-flex;
-    color: var(--blanco);
+    color: var(--grisOscuro);
     letter-spacing: .7px;
-    margin-left: 40px;
+    margin: 5px 10px;
     padding-bottom: 5px;
     font-weight: 600;
     font-family: var(--fuente);
@@ -413,6 +498,9 @@ header ul .boxCategorias a:hover{
     color: var(--negroOscuro);
     transform: translateY(-1px);
 }
+.hamburguesa{
+    display: none;
+}
 .content{
     position: relative;
     width: 100%;
@@ -420,6 +508,9 @@ header ul .boxCategorias a:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.content .menuMovil{
+    display: none;
 }
 .content .textBox{
     position: relative;
@@ -437,19 +528,6 @@ header ul .boxCategorias a:hover{
     font-family: var(--fuente);
     font-weight: 600;
     color: var(--negro);
-}
-.content .textBox .leerMas{
-    color: var(--blancoTotal);
-    padding: 7px 25px;
-    background-color: var(--celeste);
-    border-radius: 40px;
-    font-family: var(--fuente);
-    font-weight: 600;
-    font-size: 1em;
-    letter-spacing: .5px;
-    transition: .2s;
-}.content .textBox a .leerMas:hover{
-    background-color: var(--celesteHover);
 }
 .content .textBox .card .contenedor{
     display: flex;
@@ -708,6 +786,13 @@ header ul .boxCategorias a:hover{
 }
 .top .box-product .product .box-text{
     height: auto;
+}
+.top .box-product h4{
+    margin: auto;
+    text-align: center;
+}
+.top .box-product{
+    display: grid;
 }
 .top .box-product .product .box-text div .kg{
     border: 1px solid var(--grisClaro);
